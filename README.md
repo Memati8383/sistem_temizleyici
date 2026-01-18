@@ -27,6 +27,23 @@ Betiği doğrudan çalıştırın:
 python temizle.py
 ```
 
+## EXE Haline Getirme (Opsiyonel)
+
+Projeyi tek bir `.exe` dosyası haline getirmek için PyInstaller kullanabilirsiniz:
+
+1. PyInstaller yükleyin:
+
+   ```bash
+   pip install pyinstaller
+   ```
+
+2. Aşağıdaki komutu kullanarak EXE dosyasını oluşturun:
+   ```bash
+   pyinstaller --onefile --uac-admin --icon=NONE --name="SistemTemizleyici" temizle.py
+   ```
+
+Oluşan dosya `dist` klasörü içerisinde yer alacaktır.
+
 ## Notlar
 
 - Bu araç sadece **Windows** üzerinde çalışmak üzere tasarlanmıştır.
