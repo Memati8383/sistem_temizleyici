@@ -7,27 +7,7 @@ import subprocess
 from pathlib import Path
 import time
 
-def check_dependencies():
-    """Checks for required libraries and installs them if missing."""
-    try:
-        import tqdm
-    except ImportError:
-        print("[i] Gerekli kütüphaneler (tqdm) eksik. Otomatik yükleme başlatılıyor...")
-        try:
-            # Install tqdm silently
-            subprocess.check_call([sys.executable, "-m", "pip", "install", "tqdm"])
-            print("[✓] Kütüphaneler başarıyla yüklendi.\n")
-            # Restart the script to recognize the newly installed package
-            os.execl(sys.executable, sys.executable, *sys.argv)
-        except Exception as e:
-            print(f"[!] Kütüphane yüklenirken hata oluştu: {e}")
-            print("[i] Program temel modda devam edecek...")
-            time.sleep(2)
-
-# Check dependencies before anything else
-check_dependencies()
-
-# Now try to import tqdm after the check
+# Try to import tqdm, but don't fail if it's not available
 try:
     from tqdm import tqdm
     HAS_TQDM = True
@@ -153,9 +133,6 @@ if __name__ == "__main__":
             clean_system()
         else:
             print("[i] Yönetici yetkisi isteniyor...")
-            if not run_as_admin():
-                sys.exit(0)
-            else:
-                clean_system()
-
+            run_as_admin()
+            sys.exit(0)  # Orijinal program kapanır, yeni yönetici penceresi açılır
 
