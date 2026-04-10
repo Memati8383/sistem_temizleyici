@@ -1,50 +1,160 @@
-# Sistem Temizleyici (Python)
+<div align="center">
 
-Bu araç, Windows işletim sisteminde gereksiz dosyaları temizlemek ve sistem performansını artırmak için tasarlanmış modern bir Python betiğidir.
+# 🛡️ NIKO Sistem Temizleyici v3.0
 
-## Özellikler
+**Windows · macOS · Linux**
 
-- **Gereksiz Dosya Temizliği:** Kullanıcı geçici dosyaları (TEMP), Windows geçici dosyaları ve Prefetch klasörünü temizler.
-- **Geri Dönüşüm Kutusu:** Geri dönüşüm kutusunu boşaltır.
-- **Log Dosyaları:** Sistem kök dizinindeki `.log` dosyalarını temizler.
-- **DNS Temizliği:** DNS önbelleğini temizleyerek internet bağlantısını tazelemeye yardımcı olur.
-- **Görsel İlerleme Çubuğu:** `tqdm` kütüphanesi ile işlemleri görsel olarak takip edebilirsiniz.
-- **Otomatik Yönetici Yetkisi:** Gerekli izinler için otomatik olarak yönetici yetkisi ister.
+Geçici dosyaları, önbellekleri ve sistem çöplerini temizleyen gelişmiş bir terminal aracı.
 
-## Kurulum
+![Python](https://img.shields.io/badge/Python-3.7+-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Platform](https://img.shields.io/badge/Platform-Windows%20|%20macOS%20|%20Linux-blue?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-1. Python'un yüklü olduğundan emin olun.
-2. Gerekli kütüphaneleri yüklemek için (isteğe bağlı, program otomatik yüklemeye çalışacaktır):
-   ```bash
-   pip install tqdm
-   ```
+</div>
 
-## Kullanım
+---
 
-Betiği doğrudan çalıştırın:
+## ✨ Özellikler
 
-```bash
-python temizle.py
+| Özellik | Açıklama |
+|---------|----------|
+| 🖥️ **Çapraz Platform** | Windows, macOS ve Linux otomatik algılama ve platforma özel temizlik |
+| 🗑️ **Geçici Dosya Temizliği** | TEMP, sistem cache, prefetch ve önbellek dizinlerini temizler |
+| ♻️ **Çöp Kutusu** | Geri dönüşüm kutusu / Trash boşaltma |
+| 📋 **Log Temizliği** | Sistem log dosyalarını temizler |
+| 🌐 **DNS Temizliği** | DNS önbelleğini temizleyerek bağlantıyı tazeler |
+| 📊 **Animasyonlu Arayüz** | Renkli progress bar, loading animasyonları, ikonlar |
+| 🔒 **Otomatik Yetki** | Windows'ta UAC, Linux/macOS'ta sudo yetki kontrolü |
+| ⏱️ **Süre Ölçümü** | Toplam temizlik süresi raporlama |
+
+## 🎨 Ekran Görüntüsü
+
+```
+    +============================================================+
+    |                                                            |
+    |   ##    ## #### ##    ##  #######                           |
+    |   ## ## ##  ##  #####    ##     ##                          |
+    |   ##    ## #### ##    ##  #######                           |
+    |                                                            |
+    |     Sistem Temizleyici v3.0  |  Windows * macOS * Linux    |
+    |                                                            |
+    +============================================================+
+
+    +-- SISTEM BILGISI ------------------------------------------+
+    |  [WIN]  Isletim Sistemi  :  Windows (10, Build 10.0.19045) |
+    |  [PC ]  Makine           :  DESKTOP-ABC123                 |
+    |  [CPU]  Mimari           :  AMD64                          |
+    |  [PY ]  Python           :  3.11.9                         |
+    +------------------------------------------------------------+
+
+    ◆ [1] Hedef Dizinler Taraniyor
+    .......................................................
+        |-- C:\Users\USER\AppData\Local\Temp
+        |-- C:\Windows\Temp
+        |-- C:\Windows\Prefetch
+        '-- C:\$Recycle.bin
+     ▶ 4 hedef dizin tespit edildi.
+
+    ◆ [3] Temizlik Islemi
+    / Temizleniyor...   [████████████████████████████░░░░] 87.5%
 ```
 
-## EXE Haline Getirme (Opsiyonel)
+## 📋 Gereksinimler
 
-Projeyi tek bir `.exe` dosyası haline getirmek için PyInstaller kullanabilirsiniz:
+- **Python 3.7** veya üzeri
+- Ek kütüphane gerektirmez (sadece standart kütüphane kullanılır)
 
-1. PyInstaller yükleyin:
+## 🚀 Kurulum ve Kullanım
 
-   ```bash
-   pip install pyinstaller
-   ```
+### Windows
 
-2. Aşağıdaki komutu kullanarak EXE dosyasını oluşturun:
-   ```bash
-   pyinstaller --onefile --uac-admin --icon=NONE --name="SistemTemizleyici" temizle.py
-   ```
+```bash
+# Doğrudan çalıştır (UAC otomatik olarak yetki isteyecek)
+python main.py
 
-Oluşan dosya `dist` klasörü içerisinde yer alacaktır.
+# veya sağ tıklayıp "Yönetici olarak çalıştır"
+```
 
-## Notlar
+### macOS
 
-- Bu araç sadece **Windows** üzerinde çalışmak üzere tasarlanmıştır.
-- Bazı dosyalar kullanımda olduğu için silinemeyebilir (bu normaldir ve hata oluşturmadan atlanır).
+```bash
+sudo python3 main.py
+```
+
+### Linux
+
+```bash
+sudo python3 main.py
+```
+
+## 🧹 Temizlenen Alanlar
+
+### Windows
+| Alan | Yol |
+|------|-----|
+| Kullanıcı geçici dosyalar | `%TEMP%` |
+| Sistem geçici dosyalar | `C:\Windows\Temp` |
+| Prefetch verileri | `C:\Windows\Prefetch` |
+| Geri dönüşüm kutusu | `C:\$Recycle.bin` |
+| Güncelleme önbelleği | `C:\Windows\SoftwareDistribution\Download` |
+| Küçük resim önbelleği | `%LOCALAPPDATA%\Microsoft\Windows\Explorer` |
+| Log dosyaları | `C:\*.log`, `C:\Windows\Logs\**\*.log` |
+
+### macOS
+| Alan | Yol |
+|------|-----|
+| Uygulama önbelleği | `~/Library/Caches` |
+| Log dosyaları | `~/Library/Logs`, `/private/var/log` |
+| Geçici dosyalar | `/private/tmp`, `/tmp` |
+| Çöp kutusu | `~/.Trash` |
+| Chrome önbelleği | `~/Library/Caches/Google/Chrome` |
+
+### Linux
+| Alan | Yol |
+|------|-----|
+| Kullanıcı önbelleği | `~/.cache` |
+| Sistem geçici dosyalar | `/tmp`, `/var/tmp` |
+| Log dosyaları | `/var/log` |
+| Çöp kutusu | `~/.local/share/Trash` |
+| Küçük resim önbelleği | `~/.cache/thumbnails` |
+
+## 📦 EXE Oluşturma (Windows)
+
+Tek dosya olarak dağıtmak için PyInstaller kullanabilirsiniz:
+
+```bash
+# PyInstaller yükle
+pip install pyinstaller
+
+# EXE oluştur (PATH sorunu yaşamamak için 'python -m' kullanın)
+python -m PyInstaller --onefile --uac-admin --name="NikoTemizleyici" main.py
+```
+
+Oluşan dosya `dist/` klasöründe yer alacaktır.
+
+## ⚠️ Notlar
+
+- Kullanımda olan bazı dosyalar silinemeyebilir — bu normaldir ve program bunları atlayarak devam eder.
+- Windows'ta **Yönetici**, macOS/Linux'ta **root** yetkisi gereklidir.
+- Program hiçbir üçüncü parti kütüphane gerektirmez.
+- Tüm renk ve animasyonlar standart ANSI escape kodları ile çalışır.
+
+## 📁 Proje Yapısı
+
+```
+sistem_temizleyici/
+├── main.py          # Ana program dosyası
+└── README.md        # Bu dosya
+```
+
+## 📄 Lisans
+
+Bu proje MIT lisansı ile lisanslanmıştır.
+
+---
+
+<div align="center">
+
+**Niko Interactive** tarafından geliştirilmiştir.
+
+</div>
